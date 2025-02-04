@@ -22,6 +22,11 @@
         </div>
         <div class="app-content">
             <div class="container-fluid">
+                @if (session('status'))
+                    <div class="mb-4 text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <h1>Data Pengguna</h1>
                 <table id="myTable" class="table table-bordered">
                     <thead>
