@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Dashboard\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +27,11 @@ Route::get('/dashboard', function () {
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/dashboard/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
+    Route::get('/dashboard/pegawai/tambah/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+});
 
 require __DIR__.'/auth.php';
