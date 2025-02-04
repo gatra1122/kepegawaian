@@ -32,6 +32,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>NIP</th>
                             <th>Nama</th>
                             <th>Aksi</th>
                         </tr>
@@ -41,8 +42,13 @@
                         @foreach ($pegawai as $p)
                             <tr>
                                 <td>{{ $p->id }}</td>
+                                <td>{{ $p->nip }}</td>
                                 <td>{{ $p->nama }}</td>
-                                <td><a href="#">Lihat</a></td>
+                                <td><form action="{{ route('pegawai.destroy', $p->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</button>
+                                </form></td>
                             </tr>
                         @endforeach
                     </tbody>

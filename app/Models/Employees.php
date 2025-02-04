@@ -14,7 +14,7 @@ class Employees extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name', 'nip', 'position', 'department', 'salary', 'join_date',
+        'nama', 'nip', 'position', 'department', 'salary', 'join_date',
     ];
 
     protected $dates = [

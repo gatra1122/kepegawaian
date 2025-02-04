@@ -19,14 +19,14 @@ class PegawaiController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'nip' => 'required|string|max:20|unique:employees,nip',
-            'nama' => 'required|string|max:255',
-            'position' => 'required|string|max:100',
-            'department' => 'required|string|max:100',
+            'nip' => 'required',
+            'nama' => 'required',
+            'position' => 'required',
+            'department' => 'required',
             'salary' => 'required',
         ]);
 
-        $employee = Employee::create([
+        Employees::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'position' => $request->position,
@@ -36,5 +36,13 @@ class PegawaiController extends Controller
         ]);
 
         return redirect()->route('pegawai.index')->with('success', 'Berhasil menambahkan !');
+    }
+
+    public function destroy($id)
+    {
+        $pegawai = Employees::findOrFail($id);
+        $pegawai->delete();
+
+        return redirect()->route('pegawai.index')->with('success', 'Berhasil dihapus !');
     }
 }

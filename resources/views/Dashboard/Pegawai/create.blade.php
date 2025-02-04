@@ -28,23 +28,38 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama">
+                            <input type="text" name="nama" class="form-control" id="nama">
+                            @error('nama')
+                            <div class="mt-2 text-sm text-red-600">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="nip" class="form-label">NIP</label>
-                            <input type="text" class="form-control" id="nip">
+                            <input type="text" name="nip" class="form-control" id="nip">
+                            @error('nip')
+                            <div class="mt-2 text-sm text-red-600">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="position" class="form-label">Jabatan</label>
-                            <input type="text" class="form-control" id="position">
+                            <input type="text" name="position" class="form-control" id="position">
+                            @error('position')
+                            <div class="mt-2 text-sm text-red-600">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="department" class="form-label">Departemen</label>
-                            <input type="text" class="form-control" id="department">
+                            <input type="text" name="department" class="form-control" id="department">
+                            @error('department')
+                            <div class="mt-2 text-sm text-red-600">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="salary" class="form-label">Gaji</label>
-                            <input type="number" class="form-control" id="salary">
+                            <input type="number" name="salary" class="form-control" id="salary">
+                            @error('salary')
+                            <div class="mt-2 text-sm text-red-600">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <!--end::Body-->
