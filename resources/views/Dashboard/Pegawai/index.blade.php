@@ -28,6 +28,7 @@
                     </div>
                 @endif
                 <h1>Data Pengguna</h1>
+                <a href="/dashboard/pegawai/tambah" type="button" class="btn btn-success mb-2">Tambah</a>
                 <table id="myTable" class="table table-bordered">
                     <thead>
                         <tr>
@@ -44,11 +45,17 @@
                                 <td>{{ $p->id }}</td>
                                 <td>{{ $p->nip }}</td>
                                 <td>{{ $p->nama }}</td>
-                                <td><form action="{{ route('pegawai.destroy', $p->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-danger">Hapus</button>
-                                </form></td>
+                                <td>
+                                    <a href="{{route('pegawai.edit', $p->id)}}" class="btn btn-info">Edit</a>
+                                    <form action="{{ route('pegawai.destroy', $p->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
+                                            class="btn btn-danger">Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
