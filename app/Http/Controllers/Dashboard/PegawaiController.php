@@ -38,6 +38,36 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Berhasil menambahkan !');
     }
 
+    public function edit($id){
+        $pegawai = Employees::find($id);
+        return view('Dashboard.Pegawai.edit', compact('pegawai'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input yang diperlukan
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'position' => 'required',
+            'department' => 'required',
+            'salary' => 'required',
+        ]);
+
+        $employee = Employees::findOrFail($id);
+
+        $employee->update([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'position' => $request->position,
+            'department' => $request->department,
+            'salary' => $request->salary,
+        ]);
+
+        return redirect()->route('pegawai.index')->with('success', 'Berhasil mengupdate data pegawai!');
+    }
+
+
     public function destroy($id)
     {
         $pegawai = Employees::findOrFail($id);
