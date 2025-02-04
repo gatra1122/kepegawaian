@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
     Route::get('/dashboard/pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.create');
-    Route::get('/dashboard/pegawai/tambah/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+    Route::post('/dashboard/pegawai/tambah/store', [PegawaiController::class, 'store'])->name('pegawai.store');
 });
 
 require __DIR__.'/auth.php';

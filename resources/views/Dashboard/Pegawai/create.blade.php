@@ -22,7 +22,7 @@
         </div>
         <div class="app-content">
             <div class="container">
-                <form method="POST" action="@route('pegawai.store')" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('pegawai.store') }}" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">

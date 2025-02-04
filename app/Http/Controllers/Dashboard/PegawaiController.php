@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 class PegawaiController extends Controller
 {
     public function index(){
-        // $agenda = AgendaModel::orderBy('tanggal_mulai', 'desc')->get();
-        // $tamu = TamuModel::where('status', 'belum ditindak')->get();
-
-        // return view('dashboard.index', compact('agenda', 'tamu'));
-
         $pegawai = Employees::get();
         return view('Dashboard.Pegawai.index', compact('pegawai'));
     }
@@ -21,12 +16,14 @@ class PegawaiController extends Controller
     public function create(){
         return view('Dashboard.Pegawai.create');
     }
+
     public function store(Request $request){
         $request->validate([
             'nip' => 'required|string|max:20|unique:employees,nip',
             'nama' => 'required|string|max:255',
             'position' => 'required|string|max:100',
             'department' => 'required|string|max:100',
+            'salary' => 'required',
         ]);
 
         $employee = Employee::create([
@@ -34,6 +31,7 @@ class PegawaiController extends Controller
             'nama' => $request->nama,
             'position' => $request->position,
             'department' => $request->department,
+            'salary' => $request->salary,
             'join_date' => now(),
         ]);
 
