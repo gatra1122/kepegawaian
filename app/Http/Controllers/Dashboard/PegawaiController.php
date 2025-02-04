@@ -45,7 +45,6 @@ class PegawaiController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validasi input yang diperlukan
         $request->validate([
             'nip' => 'required',
             'nama' => 'required',

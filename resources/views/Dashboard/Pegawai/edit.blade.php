@@ -22,8 +22,9 @@
         </div>
         <div class="app-content">
             <div class="container">
-                <form method="POST" action="{{ route('pegawai.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('pegawai.update', $pegawai->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <!--begin::Body-->
                     <div class="card-body">
                         <div class="mb-3">
